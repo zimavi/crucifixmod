@@ -3,7 +3,7 @@
 
   "itemGroup.crucifixtab": "Crucifix Mod",
 
-  "tooltip.crucifixmod.crucifix_detail": "§bRight click to crucify mod or player\n\nOn death (when holding)§b creates safe field\naround you, and throws back anything\nwithin a 5 meters radius",
+  "tooltip.crucifixmod.crucifix_detail": "§bRight click to crucify mob or player\n\nOn death (when holding) creates safe field\naround you, and throws back anything\nwithin a 5 meters radius",
   "tooltip.crucifixmod.crucifix": "§eHold SHIFT for more info",
 
   "sounds.crucifixmod.crucifix_use": "Someone is crucifying"
