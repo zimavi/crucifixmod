@@ -1,3 +1,10 @@
 {
-  "item.crucifixmod.crucifix": "Распятие"
+  "item.crucifixmod.crucifix": "Распятие",
+
+  "itemGroup.crucifixtab": "Распятие",
+
+  "tooltip.crucifixmod.crucifix_detail": "§bПКМ чтобы уничтожить кого-либо\n\nПри смерти (если в руке)§b создает защитное поле\nвокруг Вас, и отбрасывает все\nв радиусе 5 метров",
+  "tooltip.crucifixmod.crucifix": "§eЗажмине SHIFT для большей информации",
+
+  "sounds.crucifixmod.crucifix_use": "Распятие кого-то уничтожает"
 }

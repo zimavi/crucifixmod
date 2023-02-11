@@ -1,0 +1,8 @@
+{
+  "crucifix_use": {
+    "subtitle": "sounds.crucifixmod.crucifix_use",
+    "sounds": [
+      "crucifixmod:crucifix_use"
+    ]
+  }
+}
