@@ -1,0 +1,87 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "crucifixmod:item/dark_oak_texture",
+		"particle": "crucifixmod:item/dark_oak_texture"
+	},
+	"elements": [
+		{
+			"name": "Right",
+			"from": [9, 10, 7],
+			"to": [14, 12, 9],
+			"faces": {
+				"north": {"uv": [5.52055, 10.05479, 10.52055, 12.05479], "texture": "#0"},
+				"east": {"uv": [3.50685, 12.0274, 5.50685, 14.0274], "texture": "#0"},
+				"south": {"uv": [5.52055, 14, 10.52055, 16], "texture": "#0"},
+				"west": {"uv": [10.55186, 12.05479, 12.55186, 14.05479], "texture": "#0"},
+				"up": {"uv": [5.47945, 8.04697, 10.47945, 10.04697], "texture": "#0"},
+				"down": {"uv": [5.52055, 12.0274, 10.52055, 14.0274], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Right",
+			"from": [2, 10, 7],
+			"to": [7, 12, 9],
+			"faces": {
+				"north": {"uv": [5.22896, 11.99217, 10.22896, 13.99217], "texture": "#0"},
+				"east": {"uv": [3.19374, 11.96086, 5.19374, 13.96086], "texture": "#0"},
+				"south": {"uv": [5.22896, 9.89432, 10.22896, 11.89432], "texture": "#0"},
+				"west": {"uv": [10.23875, 11.99217, 12.23875, 13.99217], "texture": "#0"},
+				"up": {"uv": [5.26027, 7.8591, 10.26027, 9.8591], "texture": "#0"},
+				"down": {"uv": [5.26027, 14, 10.26027, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "Base",
+			"from": [7, 0, 7],
+			"to": [9, 16, 9],
+			"faces": {
+				"north": {"uv": [6.1683, 0, 8.1683, 16], "texture": "#0"},
+				"east": {"uv": [4.10176, 0, 6.10176, 16], "texture": "#0"},
+				"south": {"uv": [8.26614, 0, 10.26614, 16], "texture": "#0"},
+				"west": {"uv": [10.33268, 0, 12.33268, 16], "texture": "#0"},
+				"up": {"uv": [0, 14, 2, 16], "texture": "#0"},
+				"down": {"uv": [0, 11.99217, 2, 13.99217], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 3.5, 1.5],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 3.5, 1.5],
+			"scale": [0.5, 0.5, 0.5]
+		},
+		"firstperson_righthand": {
+			"translation": [-1, 1, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"firstperson_lefthand": {
+			"translation": [-1, 1, 0],
+			"scale": [0.75, 0.75, 0.75]
+		},
+		"ground": {
+			"rotation": [90, 0, 0]
+		},
+		"gui": {
+			"rotation": [25, -45, 0]
+		},
+		"head": {
+			"translation": [0, 20, 0]
+		},
+		"fixed": {
+			"translation": [0, 0, -1.5],
+			"scale": [1.5, 1.5, 1.5]
+		}
+	},
+	"groups": [
+		{
+			"name": "Crucifix",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}
