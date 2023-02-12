@@ -15,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.common.Mod;
 import net.zimavi.crucifixmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,9 +24,6 @@ public class CrucifixItem extends Item {
     public CrucifixItem(Properties properties) {
         super(properties);
     }
-
-
-    private Player player;
 
 
     @Override
@@ -44,7 +40,6 @@ public class CrucifixItem extends Item {
 
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
-        this.player = player;
         //Item change
 
         //Entity interaction
