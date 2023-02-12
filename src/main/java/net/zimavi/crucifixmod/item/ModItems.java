@@ -18,6 +18,7 @@ public class ModItems {
                     .tab(ModCreativeModTab.CRUCIFIX_TAB)
                     .stacksTo(1)
                     .durability(1)
+                    .defaultDurability(1)
                     .setNoRepair()
                     .rarity(Rarity.RARE)));
 
