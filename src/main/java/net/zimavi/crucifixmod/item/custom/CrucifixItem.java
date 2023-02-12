@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.Vec3;
 import net.zimavi.crucifixmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
@@ -49,7 +50,7 @@ public class CrucifixItem extends Item {
 
         //Entity interaction
         entity.hurt(DamageSource.MAGIC, 200000);
-
+        player.getItemInHand(hand).setCount(0);
         return super.interactLivingEntity(stack, player, entity, hand);
     }
     
