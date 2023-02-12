@@ -4,5 +4,11 @@
     "sounds": [
       "crucifixmod:crucifix_use"
     ]
+  },
+  "crucifix_fail_use": {
+    "subtitle": "sounds.crucifixmod.crucifix_fail",
+    "sounds": [
+      "crucifixmod:crucifix_fail_use"
+    ]
   }
 }

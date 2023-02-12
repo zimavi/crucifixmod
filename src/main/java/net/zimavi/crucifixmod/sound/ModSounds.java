@@ -15,6 +15,8 @@ public class ModSounds{
     public static final RegistryObject<SoundEvent> CRUCIFIX_USE =
             registerSoundEvent("crucifix_use");
 
+    public static final  RegistryObject<SoundEvent> CRUCIFIX_FAIL =
+            registerSoundEvent("crucifix_fail_use");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name){
         return  SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(CrucifixMod.MOD_ID, name)));

@@ -6,5 +6,8 @@
   "tooltip.crucifixmod.crucifix_detail": "§bRight click to crucify mob or player\n\nOn death (when holding) creates safe field\naround you, and throws back anything\nwithin a 5 meters radius",
   "tooltip.crucifixmod.crucifix": "§eHold SHIFT for more info",
 
-  "sounds.crucifixmod.crucifix_use": "Someone is crucifying"
+  "sounds.crucifixmod.crucifix_use": "Someone is crucifying",
+  "sounds.crucifixmod.crucifix_fail": "Something to strong to be destroyed",
+
+  "death.attack.crucifix": "%1$s was destroyed by crucifix"
 }

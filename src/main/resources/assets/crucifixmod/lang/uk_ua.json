@@ -6,5 +6,8 @@
   "tooltip.crucifixmod.crucifix_detail": "§bПКМ щоб знищіти істоту\n\nПри смерті (якщо в руці) сворює безпечне поле\nнавколо вас, та відкидає все\nу радіусі 5 метрів",
   "tooltip.crucifixmod.crucifix": "§eНатисніть SHIFT для інформації",
 
-  "sounds.crucifixmod.crucifix_use": "Хтось знищується крестом"
+  "sounds.crucifixmod.crucifix_use": "Хтось знищується крестом",
+  "sounds.crucifixmod.crucifix_fail": "Хтось надто сильнийб щоб бути знищеним крестом",
+
+  "death.attack.crucifix": "%1$s був знищений крестом"
 }

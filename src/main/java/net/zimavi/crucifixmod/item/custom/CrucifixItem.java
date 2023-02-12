@@ -7,14 +7,15 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MoverType;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.fml.common.Mod;
 import net.zimavi.crucifixmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,11 +46,23 @@ public class CrucifixItem extends Item {
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
         this.player = player;
         //Item change
-        player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
-                ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
 
         //Entity interaction
-        entity.hurt(DamageSource.MAGIC, 200000);
+        if(entity instanceof Warden == false && entity instanceof EnderDragon == false && entity instanceof WitherBoss == false && entity instanceof Player == false) {
+            player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                    ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
+            entity.hurt(new DamageSource("crucifix"), 1000000000);
+        }
+        else if (entity instanceof Player) {
+            player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                    ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
+            entity.hurt(new DamageSource("crucifix"), 1000000000);
+        }
+        else {
+            player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                    ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
+        }
+
         player.getItemInHand(hand).setCount(0);
         return super.interactLivingEntity(stack, player, entity, hand);
     }
@@ -58,7 +71,7 @@ public class CrucifixItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player pPlayer, InteractionHand hand) {
         level.playSound(pPlayer, pPlayer.position().x, pPlayer.position().y, pPlayer.position().z,
-                ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
+                ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, entity.hurt(DamageSource.MAGIC, 200000);1f, 1f);
         //pPlayer.getItemInHand(InteractionHand.MAIN_HAND).hurtAndBreak(1, pPlayer,(player -> player.broadcastBreakEvent(InteractionHand.MAIN_HAND)));
         pPlayer.getCooldowns().addCooldown(this, 600);
 
