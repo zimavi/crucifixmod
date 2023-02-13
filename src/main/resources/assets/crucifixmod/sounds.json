@@ -10,5 +10,11 @@
     "sounds": [
       "crucifixmod:crucifix_fail_use"
     ]
+  },
+  "crucifix_reanimation": {
+    "subtitle": "sounds.crucifixmod.crucifix_reanimation",
+    "sounds": [
+      "crucifixmod:crucifix_reanimation"
+    ]
   }
 }

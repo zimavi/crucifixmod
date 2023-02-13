@@ -8,6 +8,7 @@
 
   "sounds.crucifixmod.crucifix_use": "Распятие кого-то уничтожает",
   "sounds.crucifixmod.crucifix_fail": "Кто-то слишком силен, чтобы быть уничтоженым",
+  "sounds.crucifixmod.crucifix_reanimation": "Распятие кого-то возраждает",
 
   "death.attack.crucifix": "%1$s был уничежен распятием"
 }

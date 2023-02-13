@@ -48,7 +48,8 @@ public class CrucifixItem extends Item {
                     ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
             entity.hurt(new DamageSource("crucifix"), 1000000000);
         }
-        else if (entity instanceof Player) {
+        else if (entity instanceof Player
+        ) {
             player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
                     ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
             entity.hurt(new DamageSource("crucifix"), 1000000000);

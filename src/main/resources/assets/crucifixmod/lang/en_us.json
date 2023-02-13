@@ -8,6 +8,7 @@
 
   "sounds.crucifixmod.crucifix_use": "Someone is crucifying",
   "sounds.crucifixmod.crucifix_fail": "Something to strong to be destroyed",
+  "sounds.crucifixmod.crucifix_reanimation": "Crucifix revives someone",
 
   "death.attack.crucifix": "%1$s was destroyed by crucifix"
 }
