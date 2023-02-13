@@ -9,5 +9,5 @@
   "sounds.crucifixmod.crucifix_use": "Распятие кого-то уничтожает",
   "sounds.crucifixmod.crucifix_fail": "Кто-то слишком силен, чтобы быть уничтоженым",
 
-  "death.attack.crucifix": "%1$s был уничежен расятием"
+  "death.attack.crucifix": "%1$s был уничежен распятием"
 }
