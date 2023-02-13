@@ -20,15 +20,14 @@ public class ModEvents {
     public static class DeathEventHandler {
         @SubscribeEvent
         public static void onEntityDeath(LivingDeathEvent event){
-            LivingEntity e = event.getEntity();
-
-            if(e instanceof Player){
-                Player player = (Player) e;
+            if(event.getEntity() instanceof Player){
+                Player player = (Player) event.getEntity();
                 if(player.getItemInHand(InteractionHand.MAIN_HAND).is(ModItems.CRUCIFIX.get())){
                     player.getItemInHand(InteractionHand.MAIN_HAND).setCount(0);
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 100, 100));
                     player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 600, 1));
-                    player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                    event.getEntity().getLevel().playSound((Player) event.getEntity(),
+                            event.getEntity().position().x, event.getEntity().position().y, event.getEntity().position().z,
                             ModSounds.CRUCIFIX_REANIMATION.get(), SoundSource.PLAYERS, 1f, 1f);
                     player.setHealth(3F);
                     event.setCanceled(true);

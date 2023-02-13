@@ -10,5 +10,5 @@
   "sounds.crucifixmod.crucifix_fail": "Хтось надто сильнийб щоб бути знищеним крестом",
   "sounds.crucifixmod.crucifix_reanimation": "Кресто когось відроджує",
 
-  "death.attack.crucifix": "%1$s був знищений крестом"
+  "death.attack.crucifix": "%1$s був(була) знищений крестом"
 }
