@@ -10,5 +10,7 @@
   "sounds.crucifixmod.crucifix_fail": "Кто-то слишком силен, чтобы быть уничтоженым",
   "sounds.crucifixmod.crucifix_reanimation": "Распятие кого-то возраждает",
 
-  "death.attack.crucifix": "%1$s был(-а) уничежен распятием"
+  "death.attack.crucifix": "%1$s был(-а) уничежен распятием",
+
+  "entity.crucifixmod.chains": "Магические цепи",
 }

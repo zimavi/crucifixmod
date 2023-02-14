@@ -1,0 +1,45 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.chains.idle": {
+			"loop": true,
+			"animation_length": 10,
+			"bones": {
+				"chains": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"10.0": {
+							"vector": [0, 3777.5, 0],
+							"easing": "linear"
+						}
+					}
+				},
+				"center_outer_big_cricle": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"10.0": {
+							"vector": [0, -3420, 0],
+							"easing": "linear"
+						}
+					}
+				},
+				"bottom_outer_circle": {
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"10.0": {
+							"vector": [0, 6660, 0],
+							"easing": "linear"
+						}
+					}
+				}
+			}
+		}
+	},
+	"geckolib_format_version": 2
+}

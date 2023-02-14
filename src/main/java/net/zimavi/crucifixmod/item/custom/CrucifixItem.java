@@ -58,7 +58,6 @@ public class CrucifixItem extends Item {
             player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
                     ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
         }
-
         player.getItemInHand(hand).setCount(0);
         return super.interactLivingEntity(stack, player, entity, hand);
     }
