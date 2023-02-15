@@ -18,6 +18,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.zimavi.crucifixmod.CrucifixKillState;
+import net.zimavi.crucifixmod.ModGlobalFields;
+import net.zimavi.crucifixmod.effect.ModEffects;
+import net.zimavi.crucifixmod.entity.custom.ChainsEntity;
 import net.zimavi.crucifixmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
 import org.openjdk.nashorn.internal.runtime.Debug;
@@ -52,52 +56,118 @@ public class CrucifixItem extends Item {
     }
 
 
-    private void crucifixTimerKill(Entity entity, Entity chains) {
-        long time = chains.getLevel().getGameTime();
-        long curr = time;
-        while (time - curr != 5 * 20) {
-            curr = chains.getLevel().getGameTime();
-        }
-        entity.hurt(new DamageSource("crucifix"), 1000000000);
-
-        curr = time;
-        while (time - curr != 8 * 20) {
-            curr = chains.getLevel().getGameTime();
-        }
-        chains.kill();
-    }
-
-
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
         //Item change
 
         //Entity interaction
         if(entity instanceof Warden == false && entity instanceof EnderDragon == false && entity instanceof WitherBoss == false && entity instanceof Player == false) {
+            if(entity.hasEffect(ModEffects.DEVILISH_RESILIENCE_EFFECT.get())){
+                player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                        ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
+                ModGlobalFields.CrucifixPlayerNBossFields.BASE_MOVEMENT_SPEED = entity.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
+                Vec3 pos = new Vec3(0f, 0.2f, 0f);
+                entity.move(MoverType.SELF, pos);
+                entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
+                ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                        entity.position().x,
+                        entity.position().y,
+                        entity.position().z,
+                        entity.getLevel());
+                player.getLevel().addFreshEntity(chains);
+                //Set fields for Tick event
+                ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
+                ModGlobalFields.CrucifixFields.TIMER_SEC = 3.5;
+                ModGlobalFields.CrucifixFields.DIEING_ENTITY = entity;
+                ModGlobalFields.CrucifixFields.TIME = entity.getLevel().getGameTime();
+                ModGlobalFields.CrucifixFields.KILL_STATE = CrucifixKillState.LeaveBoss;
+                ModGlobalFields.CrucifixFields.IS_DIEING = true;
+            }
+            else {
+                player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                        ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
+                //entity.hurt(new DamageSource("crucifix"), 1000000000);
+                Vec3 pos = new Vec3(0f, 0.2f, 0f);
+                entity.move(MoverType.SELF, pos);
+                entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
+                ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                        entity.position().x,
+                        entity.position().y,
+                        entity.position().z,
+                        entity.getLevel());
+                player.getLevel().addFreshEntity(chains);
+                //Set fields for Tick event
+                ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
+                ModGlobalFields.CrucifixFields.TIMER_SEC = 3.5;
+                ModGlobalFields.CrucifixFields.DIEING_ENTITY = entity;
+                ModGlobalFields.CrucifixFields.TIME = entity.getLevel().getGameTime();
+                ModGlobalFields.CrucifixFields.KILL_STATE = CrucifixKillState.EntityKill;
+                ModGlobalFields.CrucifixFields.IS_DIEING = true;
+            }
+        }
+        else if (entity instanceof Player) {
+            if(entity.hasEffect(ModEffects.DEVILISH_RESILIENCE_EFFECT.get())) {
+                player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                        ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
+                ModGlobalFields.CrucifixPlayerNBossFields.BASE_MOVEMENT_SPEED = entity.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
+                Vec3 pos = new Vec3(0f, 0.2f, 0f);
+                entity.move(MoverType.SELF, pos);
+                entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
+                ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                        entity.position().x,
+                        entity.position().y,
+                        entity.position().z,
+                        entity.getLevel());
+                player.getLevel().addFreshEntity(chains);
+                //Set fields for Tick event
+                ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
+                ModGlobalFields.CrucifixFields.TIMER_SEC = 3.5;
+                ModGlobalFields.CrucifixFields.DIEING_ENTITY = entity;
+                ModGlobalFields.CrucifixFields.TIME = entity.getLevel().getGameTime();
+                ModGlobalFields.CrucifixFields.KILL_STATE = CrucifixKillState.LeaveBoss;
+                ModGlobalFields.CrucifixFields.IS_DIEING = true;
+            } else {
+                player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
+                        ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
+                Vec3 pos = new Vec3(0f, 0.2f, 0f);
+                ModGlobalFields.CrucifixPlayerNBossFields.BASE_MOVEMENT_SPEED = entity.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
+                entity.move(MoverType.SELF, pos);
+                entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
+                ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                        entity.position().x,
+                        entity.position().y,
+                        entity.position().z,
+                        entity.getLevel());
+                player.getLevel().addFreshEntity(chains);
+                //Set fields for Tick event
+                ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
+                ModGlobalFields.CrucifixFields.TIMER_SEC = 3.5;
+                ModGlobalFields.CrucifixFields.DIEING_ENTITY = entity;
+                ModGlobalFields.CrucifixFields.TIME = entity.getLevel().getGameTime();
+                ModGlobalFields.CrucifixFields.KILL_STATE = CrucifixKillState.EntityKill;
+                ModGlobalFields.CrucifixFields.IS_DIEING = true;
+            }
+        }
+        else {
             player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
-                    ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
-            //entity.hurt(new DamageSource("crucifix"), 1000000000);
+                    ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
+            ModGlobalFields.CrucifixPlayerNBossFields.BASE_MOVEMENT_SPEED = entity.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
             Vec3 pos = new Vec3(0f, 0.2f, 0f);
             entity.move(MoverType.SELF, pos);
-            entity.setNoGravity(true);
             entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
-            Entity chains = addChainsEntity(
+            ChainsEntity chains = (ChainsEntity) addChainsEntity(
                     entity.position().x,
                     entity.position().y,
                     entity.position().z,
                     entity.getLevel());
             player.getLevel().addFreshEntity(chains);
-            crucifixTimerKill(entity, chains);
-        }
-        else if (entity instanceof Player
-        ) {
-            player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
-                    ModSounds.CRUCIFIX_USE.get(), SoundSource.PLAYERS, 1f, 1f);
-            //entity.hurt(new DamageSource("crucifix"), 1000000000);
-        }
-        else {
-            player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
-                    ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
+            //Set fields for Tick event
+            ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
+            ModGlobalFields.CrucifixFields.TIMER_SEC = 3.5;
+            ModGlobalFields.CrucifixFields.DIEING_ENTITY = entity;
+            ModGlobalFields.CrucifixFields.TIME = entity.getLevel().getGameTime();
+            ModGlobalFields.CrucifixFields.KILL_STATE = CrucifixKillState.LeaveBoss;
+            ModGlobalFields.CrucifixFields.IS_DIEING = true;
         }
         player.getItemInHand(hand).setCount(0);
         return super.interactLivingEntity(stack, player, entity, hand);
