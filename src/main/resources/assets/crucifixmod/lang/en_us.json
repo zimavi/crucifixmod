@@ -17,7 +17,7 @@
   "sounds.crucifixmod.crucifix_reanimation": "Crucifix revives someone",
 
   "death.attack.crucifix": "%1$s was destroyed by crucifix",
-  "death.atacck.crucifix.player": "%1$s was destroyed by crucifix",
+  "death.attack.crucifix.player": "%1$s was destroyed by crucifix",
 
   "entity.crucifixmod.chains": "Magic chains",
 
