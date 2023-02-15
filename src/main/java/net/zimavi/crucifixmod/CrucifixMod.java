@@ -5,6 +5,8 @@ import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.Potions;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.zimavi.crucifixmod.block.ModBlocks;
 import net.zimavi.crucifixmod.effect.ModEffects;
 import net.zimavi.crucifixmod.entity.ModEntities;
 import net.zimavi.crucifixmod.entity.client.ChainsRenderer;
@@ -31,7 +34,7 @@ public class CrucifixMod {
 
     public CrucifixMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        
         ModItems.register(modEventBus);
 
         ModSounds.register(modEventBus);
@@ -42,6 +45,8 @@ public class CrucifixMod {
 
         ModEntities.register(modEventBus);
 
+        ModBlocks.register(modEventBus);
+
         GeckoLib.initialize();
 
         modEventBus.addListener(this::commonSetup);
@@ -51,6 +56,8 @@ public class CrucifixMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HERB_OF_VIRIDIS.getId(), ModBlocks.POTTED_HERB_OF_VIRIDIS);
+
             BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.POISON, ModItems.CRUCIFIX.get(), ModPotions.DEVELISH_RESILIENCE_POTION.get()));
             BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(ModPotions.DEVELISH_RESILIENCE_POTION.get(), Items.REDSTONE, ModPotions.LONG_DEVELISH_RESILIENCE_POTION.get()));
         });
