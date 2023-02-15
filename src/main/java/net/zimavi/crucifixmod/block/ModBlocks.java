@@ -29,9 +29,9 @@ public class ModBlocks {
             () -> new FlowerBlock(MobEffects.GLOWING, 5,
                     BlockBehaviour.Properties.copy(Blocks.DANDELION)), ModCreativeModTab.CRUCIFIX_TAB);
 
-    public static final RegistryObject<Block> POTTED_HERB_OF_VIRIDIS = registerBlock("potted_herb_of_viridis",
+    public static final RegistryObject<Block> POTTED_HERB_OF_VIRIDIS = BLOCKS.register("potted_herb_of_viridis",
             () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), ModBlocks.HERB_OF_VIRIDIS,
-                    BlockBehaviour.Properties.copy(Blocks.DANDELION)), ModCreativeModTab.CRUCIFIX_TAB);
+                    BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

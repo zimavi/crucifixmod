@@ -24,6 +24,8 @@ import net.zimavi.crucifixmod.item.ModItems;
 import net.zimavi.crucifixmod.potion.ModPotions;
 import net.zimavi.crucifixmod.sound.ModSounds;
 import net.zimavi.crucifixmod.util.BetterBrewingRecipe;
+import net.zimavi.crucifixmod.world.feature.ModConfiguredFeatures;
+import net.zimavi.crucifixmod.world.feature.ModPlacedFeatures;
 import org.slf4j.Logger;
 import software.bernie.geckolib3.GeckoLib;
 
@@ -34,7 +36,11 @@ public class CrucifixMod {
 
     public CrucifixMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        
+
+        ModConfiguredFeatures.register(modEventBus);
+
+        ModPlacedFeatures.register(modEventBus);
+
         ModItems.register(modEventBus);
 
         ModSounds.register(modEventBus);
@@ -58,7 +64,7 @@ public class CrucifixMod {
         event.enqueueWork(() -> {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HERB_OF_VIRIDIS.getId(), ModBlocks.POTTED_HERB_OF_VIRIDIS);
 
-            BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.POISON, ModItems.CRUCIFIX.get(), ModPotions.DEVELISH_RESILIENCE_POTION.get()));
+            BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.POISON, ModBlocks.HERB_OF_VIRIDIS.get().asItem(), ModPotions.DEVELISH_RESILIENCE_POTION.get()));
             BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(ModPotions.DEVELISH_RESILIENCE_POTION.get(), Items.REDSTONE, ModPotions.LONG_DEVELISH_RESILIENCE_POTION.get()));
         });
     }
