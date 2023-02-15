@@ -1,5 +1,11 @@
 {
   "item.crucifixmod.crucifix": "Распятие",
+  "item.minecraft.potion.effect.develish_resilience_potion": "Зелье Дьяволького Сопротивления",
+  "item.minecraft.splash_potion.effect.develish_resilience_potion": "Splash Potion of Develish Resilience",
+  "item.minecraft.lingering_potion.effect.develish_resilience_potion": "Lingering Potion of Develish Resilience",
+  "item.minecraft.potion.effect.long_develish_resilience_potion": "Develish Resilience Potion",
+  "item.minecraft.splash_potion.effect.long_develish_resilience_potion": "Splash Potion of Develish Resilience",
+  "item.minecraft.lingering_potion.effect.long_develish_resilience_potion": "Lingering Potion of Develish Resilience",
 
   "itemGroup.crucifixtab": "Распятие",
 
@@ -11,6 +17,9 @@
   "sounds.crucifixmod.crucifix_reanimation": "Распятие кого-то возраждает",
 
   "death.attack.crucifix": "%1$s был(-а) уничежен распятием",
+  "death.atacck.crucifix.player": "%1$s был(-а) уничежен распятием",
 
   "entity.crucifixmod.chains": "Магические цепи",
+
+  "effect.crucifixmod.develish_resilience": "Дьявольсоке сопротивление"
 }

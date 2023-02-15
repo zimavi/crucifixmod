@@ -21,6 +21,7 @@ import net.minecraft.world.phys.Vec3;
 import net.zimavi.crucifixmod.CrucifixKillState;
 import net.zimavi.crucifixmod.ModGlobalFields;
 import net.zimavi.crucifixmod.effect.ModEffects;
+import net.zimavi.crucifixmod.entity.ModEntities;
 import net.zimavi.crucifixmod.entity.custom.ChainsEntity;
 import net.zimavi.crucifixmod.sound.ModSounds;
 import org.jetbrains.annotations.Nullable;
@@ -59,7 +60,7 @@ public class CrucifixItem extends Item {
     @Override
     public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity entity, InteractionHand hand) {
         //Item change
-
+        if(entity instanceof ChainsEntity) return InteractionResult.SUCCESS;
         //Entity interaction
         if(entity instanceof Warden == false && entity instanceof EnderDragon == false && entity instanceof WitherBoss == false && entity instanceof Player == false) {
             if(entity.hasEffect(ModEffects.DEVILISH_RESILIENCE_EFFECT.get())){
