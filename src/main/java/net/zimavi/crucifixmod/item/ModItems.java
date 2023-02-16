@@ -10,6 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 import net.zimavi.crucifixmod.CrucifixMod;
 import net.zimavi.crucifixmod.entity.ModEntities;
 import net.zimavi.crucifixmod.item.custom.CrucifixItem;
+import net.zimavi.crucifixmod.item.custom.VitaminsItem;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -23,6 +24,13 @@ public class ModItems {
                     .defaultDurability(1)
                     .setNoRepair()
                     .rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins",
+            () -> new VitaminsItem(new Item.Properties()
+                    .tab(ModCreativeModTab.CRUCIFIX_TAB)
+                    .stacksTo(16)
+                    .setNoRepair()
+                    .rarity(Rarity.UNCOMMON)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

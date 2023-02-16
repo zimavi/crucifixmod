@@ -1,5 +1,7 @@
 package net.zimavi.crucifixmod.event;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
@@ -7,9 +9,16 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -24,7 +33,9 @@ import net.zimavi.crucifixmod.entity.custom.ChainsEntity;
 import net.zimavi.crucifixmod.item.ModItems;
 import net.zimavi.crucifixmod.sound.ModSounds;
 
-import javax.swing.text.html.parser.Entity;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 
 public class ModEvents {
@@ -50,6 +61,26 @@ public class ModEvents {
                             ModSounds.CRUCIFIX_REANIMATION.get(), SoundSource.PLAYERS, 1f, 1f);
                     player.setHealth(3F);
                     event.setCanceled(true);
+                    AABB aabb = new AABB(
+                            player.position().x - 5,
+                            player.position().y - 5,
+                            player.position().z - 5,
+                            player.position().x + 5,
+                            player.position().y + 5,
+                            player.position().z + 5
+                    );
+                    List<LivingEntity> list = player.getLevel().getNearbyEntities(LivingEntity.class, TargetingConditions.DEFAULT, player, aabb);
+                    for (LivingEntity entity: list) {
+                        CompoundTag compoundtag = new CompoundTag();
+                        compoundtag.putString("id", "minecraft:lightning_bolt");
+
+                        Entity bolt = EntityType.loadEntityRecursive(compoundtag, entity.level, (e) -> {
+                            e.moveTo(entity.position().x, entity.position().y, entity.position().z, 0, 0);
+                            return e;
+                        });
+                        player.level.addFreshEntity(bolt);
+                        entity.hurt(new DamageSource("crucifix"), 50F);
+                    }
                 }
             }
         }

@@ -1,5 +1,6 @@
 {
   "item.crucifixmod.crucifix": "Crucifix",
+
   "item.minecraft.potion.effect.develish_resilience_potion": "Develish Resilience Potion",
   "item.minecraft.splash_potion.effect.develish_resilience_potion": "Splash Potion of Develish Resilience",
   "item.minecraft.lingering_potion.effect.develish_resilience_potion": "Lingering Potion of Develish Resilience",
@@ -9,6 +10,8 @@
   "item.minecraft.potion.effect.herb_of_viridis_regeneration_potion": "Herb of Viridis Potion",
   "item.minecraft.splash_potion.effect.herb_of_viridis_regeneration_potion": "Splash Potion of Herb of Viridis",
   "item.minecraft.lingering_potion.effect.herb_of_viridis_regeneration_potion": "Lingering Potion of Herb of Viridis",
+
+  "item.crucifixmod.vitamins": "Vitamins",
 
   "block.crucifixmod.herb_of_viridis": "Herb of Viridis",
   "block.crucifixmod.potted_herb_of_viridis": "Potted Herb of Viridis",
