@@ -66,6 +66,7 @@ public class CrucifixMod {
 
             BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.POISON, ModBlocks.HERB_OF_VIRIDIS.get().asItem(), ModPotions.DEVELISH_RESILIENCE_POTION.get()));
             BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(ModPotions.DEVELISH_RESILIENCE_POTION.get(), Items.REDSTONE, ModPotions.LONG_DEVELISH_RESILIENCE_POTION.get()));
+            BrewingRecipeRegistry.addRecipe(new BetterBrewingRecipe(Potions.WATER, ModBlocks.HERB_OF_VIRIDIS.get().asItem(), ModPotions.HERB_OF_VIRIDIS_REGENERATION_POTION.get())); //CHANGE TO NEW REGENERATION!!!
         });
     }
 
