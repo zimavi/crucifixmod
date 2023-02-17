@@ -9,6 +9,7 @@ assignees: ''
 
 **Describe the bug**
 A clear and concise description of what the bug is.
+(Write everything, that you did to find the bug)
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -16,6 +17,7 @@ Steps to reproduce the behavior:
 2. Look at the last .txt file (by date)
 4. Open file
 5. Copy all text to pastebin.com
+(Follow this, ONLY if your game crashed!!)
 
 **Expected behavior**
 A clear and concise description of what you expected to happen.
@@ -24,9 +26,9 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
-- Java version [e.g. 17]
- - Version [e.g. 22]
+ - OS: [e.g. Windows]
+ - Java version [e.g. 17]
+ - Mod version [e.g. 0.0.4]
 
 **Additional context**
 Add any other context about the problem here.
