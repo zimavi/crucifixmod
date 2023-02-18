@@ -15,6 +15,7 @@ import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvi
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.zimavi.crucifixmod.CrucifixMod;
 import net.zimavi.crucifixmod.block.ModBlocks;
+import net.zimavi.crucifixmod.config.CrucifixModCommonConfigs;
 
 public class ModConfiguredFeatures {
 
@@ -31,7 +32,7 @@ public class ModConfiguredFeatures {
 
 
         register(context, HERB_OF_VIRIDIS, Feature.FLOWER,
-                new RandomPatchConfiguration(3, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(3, 3, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.HERB_OF_VIRIDIS.get())))));
     }
 

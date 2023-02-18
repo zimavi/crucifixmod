@@ -16,6 +16,6 @@ public class ModCreativeModTab {
     @SubscribeEvent
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event){
         CRUCIFIX_TAB = event.registerCreativeModeTab(new ResourceLocation(CrucifixMod.MOD_ID, "crucifix_tab"),
-                builder -> builder.icon(() -> new ItemStack(() -> ModItems.CRUCIFIX.get())).title(Component.translatable("crucifixtab")).build());
+                builder -> builder.icon(() -> new ItemStack(ModItems.CRUCIFIX::get)).title(Component.translatable("itemGroup.crucifixtab")).build());
     }
 }

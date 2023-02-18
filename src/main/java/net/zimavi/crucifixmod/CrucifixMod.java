@@ -14,11 +14,15 @@ import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.zimavi.crucifixmod.block.ModBlocks;
+import net.zimavi.crucifixmod.config.CrucifixModClientConfigs;
+import net.zimavi.crucifixmod.config.CrucifixModCommonConfigs;
 import net.zimavi.crucifixmod.effect.ModEffects;
 import net.zimavi.crucifixmod.entity.ModEntities;
 import net.zimavi.crucifixmod.entity.client.ChainsRenderer;
@@ -65,6 +69,11 @@ public class CrucifixMod {
         modEventBus.addListener(this::commonSetup);
 
         modEventBus.addListener(this::addCreative);
+
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, CrucifixModClientConfigs.SPEC, "crucifixmod-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CrucifixModCommonConfigs.SPEC, "crucifixmod-common.toml");
+
 
         MinecraftForge.EVENT_BUS.register(this);
     }
