@@ -2,6 +2,7 @@ package net.zimavi.crucifixmod.sound;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,7 +23,7 @@ public class ModSounds{
             registerSoundEvent("crucifix_reanimation");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name){
-        return  SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(CrucifixMod.MOD_ID, name)));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createFixedRangeEvent(new ResourceLocation(CrucifixMod.MOD_ID, name), 15));
     }
 
     public static void register(IEventBus eventBus){

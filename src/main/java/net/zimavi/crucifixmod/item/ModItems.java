@@ -18,7 +18,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> CRUCIFIX = ITEMS.register("crucifix",
             () -> new CrucifixItem(new Item.Properties()
-                    .tab(ModCreativeModTab.CRUCIFIX_TAB)
                     .stacksTo(1)
                     .durability(1)
                     .defaultDurability(1)
@@ -27,7 +26,6 @@ public class ModItems {
 
     public static final RegistryObject<Item> VITAMINS = ITEMS.register("vitamins",
             () -> new VitaminsItem(new Item.Properties()
-                    .tab(ModCreativeModTab.CRUCIFIX_TAB)
                     .stacksTo(16)
                     .setNoRepair()
                     .rarity(Rarity.UNCOMMON)));

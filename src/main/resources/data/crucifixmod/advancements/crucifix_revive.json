@@ -1,0 +1,15 @@
+{
+  "display": {
+    "icon": {
+      "item": "crucifixmod:crucifix"
+    },
+    "title": "Evil Be Gone",
+    "description": "Use crucifix to revive",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "crucifixmod:crucifix_use",
+  "criteria": {}
+}

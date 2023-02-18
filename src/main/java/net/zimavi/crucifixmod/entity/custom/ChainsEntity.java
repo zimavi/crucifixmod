@@ -5,17 +5,16 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ambient.AmbientCreature;
 import net.minecraft.world.level.Level;
-import software.bernie.geckolib3.core.IAnimatable;
-import software.bernie.geckolib3.core.PlayState;
-import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.controller.AnimationController;
-import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
-import software.bernie.geckolib3.core.manager.AnimationData;
-import software.bernie.geckolib3.core.manager.AnimationFactory;
+import software.bernie.geckolib.animatable.GeoEntity;
+import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
+import software.bernie.geckolib.core.object.PlayState;
 
-public class ChainsEntity extends AmbientCreature implements IAnimatable {
+public class ChainsEntity extends AmbientCreature implements GeoEntity {
 
-    private AnimationFactory factory = new AnimationFactory(this);
+    private AnimatableInstanceCache factory = new SingletonAnimatableInstanceCache(this);
 
     public static AttributeSupplier setAttributes(){
         return AmbientCreature.createLivingAttributes()
@@ -30,18 +29,20 @@ public class ChainsEntity extends AmbientCreature implements IAnimatable {
         super(entityType, level);
     }
 
-    private <E extends IAnimatable>PlayState predicate(AnimationEvent<E> event){
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.chains.idle", true));
+    private PlayState predicate(AnimationState animationState){
+        animationState.getController().setAnimation(RawAnimation.begin().then("animation.chains.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
 
+
     @Override
-    public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "conroller", 0, this::predicate));
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController(this, "controller",
+                0, this::predicate));
     }
 
     @Override
-    public AnimationFactory getFactory() {
-        return this.factory;
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return factory;
     }
 }

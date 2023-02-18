@@ -1,12 +1,22 @@
 package net.zimavi.crucifixmod.item.custom;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerPlayerGameMode;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -19,6 +29,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.zimavi.crucifixmod.CrucifixKillState;
+import net.zimavi.crucifixmod.CrucifixMod;
 import net.zimavi.crucifixmod.ModGlobalFields;
 import net.zimavi.crucifixmod.effect.ModEffects;
 import net.zimavi.crucifixmod.entity.ModEntities;
@@ -34,14 +45,10 @@ public class CrucifixItem extends Item {
         super(properties);
     }
 
-    private Entity addChainsEntity(double x, double y, double z, Level level){
-        CompoundTag compoundTag = new CompoundTag();
-        compoundTag.putString("id", "crucifixmod:chains");
-
-        return EntityType.loadEntityRecursive(compoundTag, level, (e) -> {
-            e.moveTo(x, y, z, 0f, 0f);
-            return e;
-        });
+    private Entity addOneEntity(double x, double y, double z, Level level) {
+        ChainsEntity chains = new ChainsEntity(ModEntities.CHAINS.get(), level);
+        chains.setPos(x, y, z);
+        return chains;
     }
 
     @Override
@@ -63,16 +70,18 @@ public class CrucifixItem extends Item {
             //Item change
 
             if (entity instanceof ChainsEntity) return InteractionResult.SUCCESS;
+
             //Entity interaction
             if (entity instanceof Warden == false && entity instanceof EnderDragon == false && entity instanceof WitherBoss == false && entity instanceof Player == false) {
                 if (entity.hasEffect(ModEffects.DEVILISH_RESILIENCE_EFFECT.get())) {
                     player.getLevel().playSound(player, player.position().x, player.position().y, player.position().z,
                             ModSounds.CRUCIFIX_FAIL.get(), SoundSource.PLAYERS, 1f, 1f);
                     ModGlobalFields.CrucifixPlayerNBossFields.BASE_MOVEMENT_SPEED = entity.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
+                    entity.addEffect(new MobEffectInstance(MobEffects.JUMP, 70, 200, true, false));
                     Vec3 pos = new Vec3(0f, 0.2f, 0f);
                     entity.move(MoverType.SELF, pos);
                     entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
-                    ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                    ChainsEntity chains = (ChainsEntity) addOneEntity(
                             entity.position().x,
                             entity.position().y,
                             entity.position().z,
@@ -92,11 +101,15 @@ public class CrucifixItem extends Item {
                     Vec3 pos = new Vec3(0f, 0.2f, 0f);
                     entity.move(MoverType.SELF, pos);
                     entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
-                    ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                    ChainsEntity chains = (ChainsEntity) addOneEntity(
                             entity.position().x,
                             entity.position().y,
                             entity.position().z,
                             entity.getLevel());
+                    if(chains == null){
+                        player.sendSystemMessage(Component.literal("Chains entity is null!!!")
+                                .withStyle(ChatFormatting.RED));
+                    }
                     player.getLevel().addFreshEntity(chains);
                     //Set fields for Tick event
                     ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
@@ -114,7 +127,7 @@ public class CrucifixItem extends Item {
                     Vec3 pos = new Vec3(0f, 0.2f, 0f);
                     entity.move(MoverType.SELF, pos);
                     entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
-                    ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                    ChainsEntity chains = (ChainsEntity) addOneEntity(
                             entity.position().x,
                             entity.position().y,
                             entity.position().z,
@@ -134,12 +147,12 @@ public class CrucifixItem extends Item {
                     ModGlobalFields.CrucifixPlayerNBossFields.BASE_MOVEMENT_SPEED = entity.getAttribute(Attributes.MOVEMENT_SPEED).getBaseValue();
                     entity.move(MoverType.SELF, pos);
                     entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
-                    ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                    ChainsEntity chains = (ChainsEntity) addOneEntity(
                             entity.position().x,
                             entity.position().y,
                             entity.position().z,
                             entity.getLevel());
-                    player.getLevel().addFreshEntity(chains);
+                    entity.getLevel().addFreshEntity(chains);
                     //Set fields for Tick event
                     ModGlobalFields.CrucifixFields.CHAINS_ENTIY = chains;
                     ModGlobalFields.CrucifixFields.TIMER_SEC = 3.5;
@@ -155,7 +168,7 @@ public class CrucifixItem extends Item {
                 Vec3 pos = new Vec3(0f, 0.2f, 0f);
                 entity.move(MoverType.SELF, pos);
                 entity.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(0D);
-                ChainsEntity chains = (ChainsEntity) addChainsEntity(
+                ChainsEntity chains = (ChainsEntity) addOneEntity(
                         entity.position().x,
                         entity.position().y,
                         entity.position().z,

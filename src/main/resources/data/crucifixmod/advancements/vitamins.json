@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "crucifixmod:vitamins"
+    },
+    "title": "Woosh!",
+    "description": "Get Vitamins",
+    "background": "crucifixmod:textures/item/barrel_bottom.png",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "crucifixmod:crucifixmod",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crucifixmod:vitamins"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

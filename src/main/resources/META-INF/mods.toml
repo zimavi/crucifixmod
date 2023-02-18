@@ -13,13 +13,14 @@ license="All rights reserved"
 # A URL to refer people to when problems occur with this mod
 #issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
+issueTrackerURL = "https://github.com/zimavi/crucifixmod/issues"
 [[mods]] #mandatory
 # The modid of the mod
 modId="crucifixmod" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
 # ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
 # see the associated build.gradle script for how to populate this completely automatically during a build
-version="0.0.6-1.19" #mandatory
+version="0.0.5-1.19.3" #mandatory
  # A display name for the mod
 displayName="Doors Crucifix Mod" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/
@@ -53,7 +54,7 @@ Mod, that adds crucifix from DOORS to Minecraft
     # Does this dependency have to exist - if not, ordering below must be specified
     mandatory=true #mandatory
     # The version range of the dependency
-    versionRange="[41,)" #mandatory
+    versionRange="[44,)" #mandatory
     # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
     ordering="NONE"
     # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -62,7 +63,15 @@ Mod, that adds crucifix from DOORS to Minecraft
 [[dependencies.crucifixmod]]
     modId="minecraft"
     mandatory=true
-# This version range declares a minimum of the current minecraft version up to but not including the next major version
+
     versionRange="[1.19,1.20)"
     ordering="NONE"
+    side="BOTH"
+
+[[dependencies.crucifixmod]]
+    modId="geckolib"
+    mandatory=true
+
+    versionRange="[4.0.3,5.0.0)"
+    ordering="AFTER"
     side="BOTH"

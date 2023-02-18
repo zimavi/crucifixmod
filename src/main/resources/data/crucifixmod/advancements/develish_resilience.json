@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:potion",
+      "nbt": "{Potion:\"crucifixmod:develish_resilience_potion\"}"
+    },
+    "title": "Unstoppable",
+    "description": "Drink Develish Resilience potion",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "crucifixmod:crucifixmod",
+  "criteria": {
+    "trigger": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+          "crucifixmod:develish_resilience": {
+            "ambient": false
+          }
+        }
+      }
+    }
+  }
+}

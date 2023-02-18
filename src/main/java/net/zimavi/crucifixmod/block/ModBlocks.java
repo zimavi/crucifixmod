@@ -27,20 +27,21 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> HERB_OF_VIRIDIS = registerBlock("herb_of_viridis",
             () -> new FlowerBlock(MobEffects.GLOWING, 5,
-                    BlockBehaviour.Properties.copy(Blocks.DANDELION)), ModCreativeModTab.CRUCIFIX_TAB);
+                    BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 
     public static final RegistryObject<Block> POTTED_HERB_OF_VIRIDIS = BLOCKS.register("potted_herb_of_viridis",
             () -> new FlowerPotBlock(() -> ((FlowerPotBlock) Blocks.FLOWER_POT), ModBlocks.HERB_OF_VIRIDIS,
                     BlockBehaviour.Properties.copy(Blocks.DANDELION)));
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block, CreativeModeTab tab) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn, tab);
+    public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
+        RegistryObject toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn);
         return toReturn;
     }
-    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block,
-                                                                            CreativeModeTab tab){
-        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+
+    public static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
+        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+                new Item.Properties()));
     }
     public static void register(IEventBus eventBus){
         BLOCKS.register(eventBus);

@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "crucifixmod:crucifix"
+    },
+    "title": "Crucifix Mod",
+    "description": "Interesting.. crucifix...",
+    "background": "crucifixmod:textures/item/barrel_bottom.png",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "crucifixmod:crucifix"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

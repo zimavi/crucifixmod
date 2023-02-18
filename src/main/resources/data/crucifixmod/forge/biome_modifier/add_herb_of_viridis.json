@@ -1,6 +1,6 @@
 {
 	"type": "forge:add_features",
 	"biomes": "#forge:is_plains",
-	"features": "crucifixmod:herb_of_viribis_placed",
+	"features": "crucifixmod:herb_of_viridis_placed",
 	"step": "vegetal_decoration"
 }
