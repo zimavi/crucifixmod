@@ -11,6 +11,20 @@
   "item.minecraft.splash_potion.effect.herb_of_viridis_regeneration_potion": "Splash Potion of Herb of Viridis",
   "item.minecraft.lingering_potion.effect.herb_of_viridis_regeneration_potion": "Lingering Potion of Herb of Viridis",
 
+  "item.crucifixmod.dawn_of_the_doors_record": "Music Disc",
+  "item.crucifixmod.elevator_jam_record": "Music Disc",
+  "item.crucifixmod.guiding_light_record": "Music Disc",
+  "item.crucifixmod.here_i_come_record": "Music Disc",
+  "item.crucifixmod.jeffs_jingle_record": "Music Disc",
+  "item.crucifixmod.unhinged_record": "Music Disc",
+
+  "item.crucifixmod.dawn_of_the_doors_record.desc": "LSPLASH - Dawn Of The Doors",
+  "item.crucifixmod.elevator_jam_record.desc": "LSPLASH - Elevator Jam",
+  "item.crucifixmod.guiding_light_record.desc": "LSPLASH - Guiding Light",
+  "item.crucifixmod.here_i_come_record.desc": "LSPLASH - Here I Come",
+  "item.crucifixmod.jeffs_jingle_record.desc": "LSPLASH - Jeff's Jingle",
+  "item.crucifixmod.unhinged_record.desc": "LSPLASH - Unhinged",
+
   "item.crucifixmod.vitamins": "Vitamins",
 
   "block.crucifixmod.herb_of_viridis": "Herb of Viridis",

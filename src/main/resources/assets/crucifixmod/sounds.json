@@ -16,5 +16,53 @@
     "sounds": [
       "crucifixmod:crucifix_reanimation"
     ]
+  },
+  "music_elevator_jam": {
+    "sounds": [
+      {
+        "name": "crucifixmod:elevator_jam.ogg",
+        "stream": true
+      }
+    ]
+  },
+  "music_dawn_of_the_doors": {
+    "sounds": [
+      {
+        "name": "crucifixmod:dawn_of_the_doors.ogg",
+        "stream": true
+      }
+    ]
+  },
+  "music_guiding_light": {
+    "sounds": [
+      {
+        "name": "crucifixmod:guiding_light.ogg",
+        "stream": true
+      }
+    ]
+  },
+  "music_here_i_come": {
+    "sounds": [
+      {
+        "name": "crucifixmod:here_i_come.ogg",
+        "stream": true
+      }
+    ]
+  },
+  "music_jeffs_jingle": {
+    "sounds": [
+      {
+        "name": "crucifixmod:jeffs_jingle.ogg",
+        "stream": true
+      }
+    ]
+  },
+  "music_unhinged": {
+    "sounds": [
+      {
+        "name": "crucifixmod:unhinged.ogg",
+        "stream": true
+      }
+    ]
   }
 }
